@@ -3,6 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from './typeorm/entities/User';
+import { PassportModule } from '@nestjs/passport';
 
 @Module({
   imports: [
@@ -13,9 +15,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     username: 'root',
     password: '123456',
     database: 'google_oauth2_app',
-    entities: [],
+    entities: [User],
     synchronize: true,
-  })
+  }),
+  PassportModule.register({ session: true }),
 ],
   controllers: [AppController],
   providers: [AppService],
