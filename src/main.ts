@@ -8,7 +8,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
   app.use(session({
-    secret: 'chu_van_gia',
+    secret: 'topsecret',
     saveUninitialized: false,
     resave: false,
     cookie: {
